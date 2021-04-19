@@ -5,6 +5,10 @@ export const Input = styled.div`
 `
 
 export const InputLabel = styled.div`
+    &.size--regular {
+        font-size: 12px;
+    }
+
     &.size--large {
         font-size: 20px;
     }
@@ -33,13 +37,18 @@ export const InputMainInput = styled.input`
     padding-left: 12px;
     padding-right: 12px;
     color: #272D4E;
-    font-size: 24px;
 
     ::placeholder {
         color: #dddddd
     }
 
+    &.size--regular {
+        height: 32px;
+        font-size: 16px;
+    }
+
     &.size--large {
         height: 64px;
+        font-size: 24px;
     }
 `

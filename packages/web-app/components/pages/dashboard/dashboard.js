@@ -1,24 +1,47 @@
-import { useEffect } from 'react';
+import { 
+    useEffect,
+    useState
+} from 'react';
 import { useRouter } from 'next/router';
 import { 
+    firestore,
     onAuthStateChanged,
     signOut
 } from '../../../helpers/firebase';
+import {
+    Account,
+    Watchlist
+} from '../../views';
 import * as S from './dashboard-styled-components';
 
 export const Dashboard = () => {
+    // useState hook
+    const [user, setUser] = useState({
+        email: undefined,
+        fullName: undefined,
+        id: undefined,
+        rfid: undefined,
+        Watchlist: []
+    });
     // userRouter hook
     const router = useRouter();
 
     // useEffect hook
     useEffect(() => {
         onAuthStateChanged(
-            (user) => {
-                console.log('userExists')
-                console.log(user)
+            // if user exists
+            async (firebaseUser) => {
+                const userRef = await firestore.collection('users').doc(firebaseUser.uid);
+                const userSnapshot = await userRef.get();
+                const userData = userSnapshot.data();
+
+                const newUser = userData;
+                setUser(newUser);
             },
+            // if user does not exist
             () => {
-                console.log('userDoesNotExist')
+                // debugging
+                //console.log('userDoesNotExist')
                 router.push('/')
             }
         )},
@@ -74,7 +97,14 @@ export const Dashboard = () => {
 
             {/* body */}
             <S.DashboardBody>
-
+                {
+                    router.query.view === 'account' &&
+                    <Account user={user} />
+                }
+                {
+                    router.query.view === 'watchlist' &&
+                    <Watchlist user={user} />
+                }
             </S.DashboardBody>
         </S.Dashboard>
     )

@@ -46,7 +46,8 @@ export const SignIn = (props) => {
             }
         }
         catch (error) {
-            console.log(error)
+            // debugging
+            // console.log(error)
         }
     }
     

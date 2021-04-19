@@ -17,25 +17,27 @@ else {
     app = firebase.apps[0]
 }
 
-console.log(app.firestore().collection('users'))
-const firestore = app.firestore();
+export const firestore = app.firestore();
 
 export const createUserWithEmailAndPassword = async (data) => {
     try {
-        const user = await app.auth().createUserWithEmailAndPassword(data.email, data.password);
+        const { user } = await app.auth().createUserWithEmailAndPassword(data.email, data.password);
 
         if (user) {
-            firestore.collection('users').doc(data.uid).set({
+            firestore.collection('users').doc(user.uid).set({
                 fullName: data.fullName,
                 email: data.email,
+                id: user.uid,
                 rfid: data.rfid,
+                watchlist: []
             })
         }
 
         return user;
     }
     catch (error) {
-        console.log(error)
+        // debugging
+        // console.log(error)
         return false;
     }
 }
@@ -47,22 +49,25 @@ export const signInWithEmailAndPassword = async (data) => {
         return user;
     }
     catch (error) {
-        console.log(error)
+        // debugging
+        // console.log(error)
         return false;
     }
+}
+
+export const signOut = () => {
+    firebase.auth().signOut();
 }
 
 export const onAuthStateChanged = async (onUserExists, onUserDoesNotExist) => {
     firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             onUserExists(user);
+            // debugging
+            // console.log('user', user.uid)
         }
         else {
             onUserDoesNotExist();
         }
     })
-}
-
-export const signOut = () => {
-    firebase.auth().signOut();
 }

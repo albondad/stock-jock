@@ -52,7 +52,8 @@ export const SignUp = (props) => {
             }
         }
         catch (error) {
-            console.log(error)
+            // debugging
+            // console.log(error)
         }
     }
     

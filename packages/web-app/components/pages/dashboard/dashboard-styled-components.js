@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Dashboard = styled.div`
+    display: flex;
     background-color: #F3F3FD;
     height: 100vh;
+    pad
 `
 
 export const DashboardSidebar = styled.div`
@@ -36,4 +38,9 @@ export const DashboardSidebarBodyItem = styled.div`
 `
 
 export const DashboardBody = styled.div`
+    padding-top: 96px;
+    padding-left: 64px;
+    padding-right: 128px;
+    flex-basis: 0;
+    flex-grow: 1;
 `
