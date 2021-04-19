@@ -7,7 +7,7 @@ const getPathToEnvFile = () => {
         return pathToEnvFile;
     }
     else {
-        throw '[web-application] .env file does not exitst';
+        console.log('[web-application] .env file does not exitst');
     }
 }
 
