@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cd packages/web-app && yarn && yarn start",
+    "build": "cd packages/web-app && yarn && yarn build && yarn start",
     "start": "cd packages/web-app && yarn && yarn start",
     "dev:web-app": "cd packages/web-app && yarn dev"
   }
