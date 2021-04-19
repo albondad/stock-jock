@@ -22,7 +22,7 @@ export const Landing = () => {
     const router = useRouter();
 
     // event handlers
-    const onSignUpButtonClick = () => {
+    const onRegularSizedSignUpButtonClick = () => {
         const url = {
             pathname: '/',
             query: {
@@ -42,12 +42,32 @@ export const Landing = () => {
         router.push(url);
     }
 
+    const onTryTodayNowButtonClick = () => {
+        const url = {
+            pathname: '/',
+            query: {
+                view: "sign-up"  // update the query param
+            }
+        }
+        router.push(url);
+    }
+
+    const onLargeSizedSignUpButtonClick = () => {
+        const url = {
+            pathname: '/',
+            query: {
+                view: "sign-up"  // update the query param
+            }
+        }
+        router.push(url);
+    }
+
     // constants
     const links = [
         {
             value: <Button>Sign Up</Button>,
             key: "sign up",
-            onClick: onSignUpButtonClick
+            onClick: onRegularSizedSignUpButtonClick
         },
         {
             value: <Button variant='outlined'>Sign In</Button>,
@@ -84,6 +104,7 @@ export const Landing = () => {
                             <Button 
                                 color="white"
                                 size="large"
+                                onClick={onTryTodayNowButtonClick}
                             >
                                 Try Today
                             </Button>
@@ -95,7 +116,12 @@ export const Landing = () => {
             {/* sign up section */}
             <S.LandingSectionSignUp>
                 <S.LandingSectionSignUpMain>
-                    <Button size="extra-large">Sign Up</Button>
+                    <Button 
+                        size="extra-large"
+                        onClick={onLargeSizedSignUpButtonClick}
+                    >
+                        Sign Up
+                    </Button>
                 </S.LandingSectionSignUpMain>
             </S.LandingSectionSignUp>
 
