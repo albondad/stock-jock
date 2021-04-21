@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 export const SignUp = styled.div`
+    box-sizing: border-box;
     position: fixed;
+    z-index: 1000;
     top: 0;
     background-color: #ffffff;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
+    padding-bottom: 128px;
+    overflow-y: scroll;
 `
 
 export const SignUpMain = styled.div`

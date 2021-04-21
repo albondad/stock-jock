@@ -91,7 +91,6 @@ export const SignUp = (props) => {
                             label="RFID"
                             name="rfid"
                             placeholder="00000000"
-                            type="number"
                             size="large"
                         />
                     </S.SignUpMainFormInput>
