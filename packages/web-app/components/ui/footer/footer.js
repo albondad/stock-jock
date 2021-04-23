@@ -12,7 +12,6 @@ export const Footer = (props) => {
                     <S.FooterMainSectionHeading>Developers</S.FooterMainSectionHeading>
                     <S.FooterMainSectionItem>Alex Andrew</S.FooterMainSectionItem>
                     <S.FooterMainSectionItem>Josh Dudley</S.FooterMainSectionItem>
-                    <S.FooterMainSectionItem>Al Bondad</S.FooterMainSectionItem>
                 </S.FooterMainSection>
             </S.FooterMain>
         </S.Footer>
